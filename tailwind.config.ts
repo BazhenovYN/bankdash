@@ -1,4 +1,6 @@
 import type { Config } from 'tailwindcss';
+import colors from 'tailwindcss/colors';
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 const config: Config = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
@@ -12,11 +14,30 @@ const config: Config = {
     colors: {
       blue: {
         200: '#F5F7FA',
+        300: '#D9E9FF',
         400: '#E6EFF5',
         600: '#2D60FF',
       },
       gray: {
         400: '#B1B1B1',
+        500: '#8BA3CB',
+        600: '#718EBF',
+      },
+      red: {
+        400: '#FE5C73',
+      },
+      transparent: colors.transparent,
+      while: colors.white,
+      black: colors.black,
+    },
+    fontSize: {
+      ...defaultTheme.fontSize,
+      '2xl': ['1.5625rem', '1.875rem'],
+      '3xl': ['1.75rem', '2.125'],
+    },
+    extend: {
+      borderRadius: {
+        '5xl': '2.5rem',
       },
     },
   },

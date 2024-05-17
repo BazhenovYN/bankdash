@@ -17,6 +17,7 @@ const config: Config = {
         300: '#D9E9FF',
         400: '#E6EFF5',
         600: '#2D60FF',
+        900: '#343C6A',
       },
       gray: {
         400: '#B1B1B1',
@@ -27,7 +28,7 @@ const config: Config = {
         400: '#FE5C73',
       },
       transparent: colors.transparent,
-      while: colors.white,
+      white: colors.white,
       black: colors.black,
     },
     fontSize: {
@@ -36,8 +37,14 @@ const config: Config = {
       '3xl': ['1.75rem', '2.125'],
     },
     extend: {
+      fontSize: {
+        s: ['0.625rem', '0.75rem'],
+      },
       borderRadius: {
         '5xl': '2.5rem',
+      },
+      invert: {
+        70: '.70',
       },
     },
   },

@@ -7,7 +7,9 @@ export default function MainLayout({ children }: Readonly<{ children: React.Reac
       <SideNav />
       <div className="flex w-full flex-col">
         <Header />
-        <main className="grow border-t border-t-blue-400 bg-blue-200">{children}</main>
+        <main className="grow border-t border-t-blue-400 bg-blue-200 px-10 pb-8 pt-6">
+          {children}
+        </main>
       </div>
     </>
   );

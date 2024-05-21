@@ -4,18 +4,16 @@ import clsx from 'clsx';
 import Image from 'next/image';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
+  width: number;
+  height: number;
   src?: string;
   alt?: string;
 }
 
-export function Avatar({ src, alt = '', className, children }: Readonly<Props>) {
+export function Avatar({ src, width, height, alt = '', className, children }: Readonly<Props>) {
   return (
-    <div className={clsx(className, 'relative')}>
-      {src ? (
-        <Image src={src} alt={alt} layout="fill" objectFit="cover" className="rounded-full" />
-      ) : (
-        <div>{children}</div>
-      )}
+    <div className={clsx('overflow-hidden rounded-full', className)}>
+      {src ? <Image src={src} alt={alt} width={width} height={height} /> : <>{children}</>}
     </div>
   );
 }

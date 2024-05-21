@@ -25,7 +25,7 @@ export function WidgetContainer({
           {linkSeeAll && <Link href={linkSeeAll}>See all</Link>}
         </div>
       </div>
-      <div className="rounded-3xl">{children}</div>
+      <div className="overflow-hidden rounded-3xl">{children}</div>
     </div>
   );
 }

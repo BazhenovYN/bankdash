@@ -24,8 +24,12 @@ const config: Config = {
         500: '#8BA3CB',
         600: '#718EBF',
       },
+      green: {
+        500: '#41D4A8',
+      },
       red: {
         400: '#FE5C73',
+        500: '#FF4B4A',
       },
       transparent: colors.transparent,
       white: colors.white,

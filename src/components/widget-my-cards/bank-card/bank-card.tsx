@@ -68,7 +68,7 @@ export function BankCard({ card, type = 'secondary' }: Readonly<Props>) {
       >
         <div className="flex items-center justify-between px-5 py-4 lg:px-6 lg:py-5">
           <div className="text-base font-semibold lg:text-xl">
-            {maskCardNumber(card.cardNumber)}
+            {maskCardNumber(card.cardNumber, 'middle')}
           </div>
           <MasterCartLogo
             className={clsx(

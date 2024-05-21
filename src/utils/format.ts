@@ -21,7 +21,7 @@ export const maskCardNumber = (
 
   switch (template) {
     case 'start':
-      return `**** **** ${firstPart}`;
+      return `**** **** ${lastPart}`;
     case 'middle':
       return `${firstPart} **** **** ${lastPart}`;
     case 'end':

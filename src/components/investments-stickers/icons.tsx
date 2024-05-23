@@ -1,7 +1,7 @@
 import MoneyBagSvg from '@/assets/svg/money-bag.svg';
 import PieChartSvg from '@/assets/svg/pie-chart.svg';
 import RepeatSvg from '@/assets/svg/repeat.svg';
-import { SvgIcon } from '@/components/common/svg-icon';
+import { SvgIcon } from '@/components/ui/svg-icon';
 
 export function MoneyBagIcon() {
   return (

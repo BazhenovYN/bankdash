@@ -9,13 +9,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   linkSeeAll?: string;
 }
 
-export function WidgetContainer({
-  children,
-  className,
-  title,
-  linkSeeAll,
-  linkAdd,
-}: Readonly<Props>) {
+export function Container({ children, className, title, linkSeeAll, linkAdd }: Readonly<Props>) {
   return (
     <div className={clsx('flex h-full w-full flex-col gap-5', className)}>
       <div className="flex justify-between font-semibold capitalize text-blue-900">

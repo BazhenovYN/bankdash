@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-import { WidgetContainer } from '@/components/widget-container';
+import { Container } from '@/components/ui/container';
 import { Transaction } from '@/types';
 import { formatAmount, formateDate } from '@/utils';
 import { IconCategory } from './icon-category';
@@ -11,7 +11,7 @@ type Props = {
 
 export function ShortList({ transactions }: Readonly<Props>) {
   return (
-    <WidgetContainer title="Recent transactions" className="max-w-[350px]">
+    <Container title="Recent transactions" className="max-w-[350px]">
       <div className="flex flex-col justify-between gap-2 bg-white p-6">
         {transactions.map((transaction) => (
           <div key={transaction.id} className="flex items-center justify-between">
@@ -34,6 +34,6 @@ export function ShortList({ transactions }: Readonly<Props>) {
           </div>
         ))}
       </div>
-    </WidgetContainer>
+    </Container>
   );
 }

@@ -1,4 +1,4 @@
-import { Avatar } from '@/components/common/avatar';
+import { Avatar } from '@/components/ui/avatar';
 import { getUser } from '@/services/user';
 
 export async function UserAvatar() {

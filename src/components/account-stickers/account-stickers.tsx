@@ -3,7 +3,7 @@ import { getCurrentBalance } from '@/services/finances';
 import { formatAmount } from '@/utils';
 import { ExpenseIcon, IncomeIcon, MoneyIcon, SavingIcon } from './icons';
 
-export async function WidgetAccountStickers() {
+export async function AccountStickers() {
   const balance = await getCurrentBalance();
   return (
     <StickerList>

@@ -1,7 +1,7 @@
 import BagSvg from '@/assets/svg/bag.svg';
 import InsuranceSvg from '@/assets/svg/life-insurance.svg';
 import ShieldSvg from '@/assets/svg/shield.svg';
-import { SvgIcon } from '@/components/common/svg-icon';
+import { SvgIcon } from '@/components/ui/svg-icon';
 
 export function InsuranceIcon() {
   return (

@@ -3,7 +3,7 @@ import { getTotalInvestStatistic } from '@/services/finances';
 import { formatAmount } from '@/utils';
 import { MoneyBagIcon, PieChartIcon, RepeatIcon } from './icons';
 
-export async function WidgetInvestmentsStickers() {
+export async function InvestmentsStickers() {
   const totalInvestment = await getTotalInvestStatistic();
   return (
     <StickerList>

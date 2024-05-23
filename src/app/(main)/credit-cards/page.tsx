@@ -1,9 +1,9 @@
-import { WidgetMyCards } from '@/components/widget-my-cards';
+import { MyCards } from '@/components/my-cards';
 
 export default function CreditCardsPage() {
   return (
     <div>
-      <WidgetMyCards quantity={3} />
+      <MyCards quantity={3} />
     </div>
   );
 }

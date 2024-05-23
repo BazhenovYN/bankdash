@@ -7,7 +7,7 @@ const data = [
   { id: 3, title: 'Safety', content: 'We are your allies', icon: <SafetyIcon /> },
 ];
 
-export function WidgetServiceStickers() {
+export function ServiceStickers() {
   return (
     <StickerList>
       {data.map((record) => (

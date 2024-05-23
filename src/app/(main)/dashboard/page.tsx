@@ -1,11 +1,11 @@
-import { WidgetMyCards } from '@/components/widget-my-cards';
-import { WidgetRecentTransactionsList } from '@/components/widget-recent-transactions-list';
+import { MyCards } from '@/components/my-cards';
+import { RecentTransactionsList } from '@/components/recent-transactions-list';
 
 export default function DashboardPage() {
   return (
     <>
-      <WidgetMyCards quantity={2} />
-      <WidgetRecentTransactionsList quantity={3} />
+      <MyCards quantity={2} />
+      <RecentTransactionsList quantity={3} />
     </>
   );
 }

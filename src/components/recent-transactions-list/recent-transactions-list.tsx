@@ -7,10 +7,7 @@ type Props = {
   detailed?: boolean;
 };
 
-export async function WidgetRecentTransactionsList({
-  quantity,
-  detailed = false,
-}: Readonly<Props>) {
+export async function RecentTransactionsList({ quantity, detailed = false }: Readonly<Props>) {
   const transactions = await getLastTransactions(quantity);
 
   if (detailed) {

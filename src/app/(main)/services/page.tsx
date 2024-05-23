@@ -1,9 +1,9 @@
-import { WidgetServiceStickers } from '@/components/widget-service-stickers';
+import { ServiceStickers } from '@/components/service-stickers';
 
 export default function ServicesPage() {
   return (
     <div>
-      <WidgetServiceStickers />
+      <ServiceStickers />
     </div>
   );
 }

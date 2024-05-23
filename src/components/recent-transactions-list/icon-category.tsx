@@ -2,7 +2,7 @@ import DollarSvg from '@/assets/svg/dollar.svg';
 import PersonSvg from '@/assets/svg/person.svg';
 import ServiceSvg from '@/assets/svg/service-v2.svg';
 import ShoppingSvg from '@/assets/svg/shopping.svg';
-import { SvgIcon } from '@/components/common/svg-icon';
+import { SvgIcon } from '@/components/ui/svg-icon';
 import type { Size } from '@/types';
 
 type Props = {

@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-import { WidgetContainer } from '@/components/widget-container';
+import { Container } from '@/components/ui/container';
 import { Transaction } from '@/types';
 import { formatAmount, formateDate, maskCardNumber } from '@/utils';
 import { IconCategory } from './icon-category';
@@ -11,7 +11,7 @@ type Props = {
 
 export function DetailedList({ transactions }: Readonly<Props>) {
   return (
-    <WidgetContainer title="Recent transactions" className="max-w-[730px]">
+    <Container title="Recent transactions" className="max-w-[730px]">
       <div className="bg-white p-4">
         <table className="w-full">
           <tbody>
@@ -49,6 +49,6 @@ export function DetailedList({ transactions }: Readonly<Props>) {
           </tbody>
         </table>
       </div>
-    </WidgetContainer>
+    </Container>
   );
 }

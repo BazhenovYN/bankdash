@@ -1,6 +1,6 @@
 import NotificationIcon from '@/assets/svg/notification.svg';
 import SettingsIcon from '@/assets/svg/settings-outlined.svg';
-import { IconButton } from '@/components/common/button';
+import { IconButton } from '@/components/ui/button';
 import { Search } from './search';
 
 export function Toolbar() {

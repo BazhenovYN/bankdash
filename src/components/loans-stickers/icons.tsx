@@ -2,7 +2,7 @@ import PersonSvg from '@/assets/svg/accounts.svg';
 import BriefcaseSvg from '@/assets/svg/briefcase.svg';
 import GraphSvg from '@/assets/svg/graph.svg';
 import SupportSvg from '@/assets/svg/support.svg';
-import { SvgIcon } from '@/components/common/svg-icon';
+import { SvgIcon } from '@/components/ui/svg-icon';
 
 export function PersonIcon() {
   return (

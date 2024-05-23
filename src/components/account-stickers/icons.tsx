@@ -2,7 +2,7 @@ import ExpenseSvg from '@/assets/svg/expense.svg';
 import IncomeSvg from '@/assets/svg/income.svg';
 import MoneySvg from '@/assets/svg/money.svg';
 import SavingSvg from '@/assets/svg/saving.svg';
-import { SvgIcon } from '@/components/common/svg-icon';
+import { SvgIcon } from '@/components/ui/svg-icon';
 
 export function MoneyIcon() {
   return (

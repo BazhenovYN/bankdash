@@ -1,18 +1,18 @@
 import { Suspense } from 'react';
 
+import { AccountStickers } from '@/components/account-stickers';
+import { MyCards } from '@/components/my-cards';
+import { RecentTransactionsList } from '@/components/recent-transactions-list';
 import { StickerListSkeleton } from '@/components/sticker';
-import { WidgetAccountStickers } from '@/components/widget-account-stickers';
-import { WidgetMyCards } from '@/components/widget-my-cards';
-import { WidgetRecentTransactionsList } from '@/components/widget-recent-transactions-list';
 
 export default function AccountsPage() {
   return (
     <div className="flex flex-col gap-8">
       <Suspense fallback={<StickerListSkeleton length={4} />}>
-        <WidgetAccountStickers />
+        <AccountStickers />
       </Suspense>
-      <WidgetRecentTransactionsList quantity={3} detailed />
-      <WidgetMyCards quantity={1} />
+      <RecentTransactionsList quantity={3} detailed />
+      <MyCards quantity={1} />
     </div>
   );
 }

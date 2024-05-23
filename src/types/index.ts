@@ -8,6 +8,14 @@ export type User = {
   img: string;
 };
 
+export type Duration = {
+  years: number;
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+};
+
 export type Card = {
   id: number;
   cardService: string;
@@ -56,5 +64,14 @@ export type TotalLoansStatistic = {
   corporateLoans: number;
   businessLoans: number;
   educationLoans: number;
+  currency: Currency;
+};
+
+export type SentInvoice = {
+  id: string;
+  description: string;
+  category: string;
+  date: Date;
+  amount: number;
   currency: Currency;
 };

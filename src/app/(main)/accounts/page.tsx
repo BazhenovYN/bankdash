@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 
 import { AccountStickers } from '@/components/account-stickers';
+import { InvoicesSent } from '@/components/invoices-sent';
 import { MyCards } from '@/components/my-cards';
 import { RecentTransactionsList } from '@/components/recent-transactions-list';
 import { StickerListSkeleton } from '@/components/sticker';
@@ -20,7 +21,9 @@ export default function AccountsPage() {
         <MyCards quantity={1} />
       </div>
       <div className="col-span-2">Debit & Credit Overview</div>
-      <div className="col-start-3">Invoices Sent</div>
+      <div className="col-start-3">
+        <InvoicesSent />
+      </div>
     </div>
   );
 }

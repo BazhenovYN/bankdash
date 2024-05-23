@@ -1,5 +1,7 @@
+import AppleSvg from '@/assets/svg/apple.svg';
 import DollarSvg from '@/assets/svg/dollar.svg';
 import PersonSvg from '@/assets/svg/person.svg';
+import PlaystationSvg from '@/assets/svg/playstation.svg';
 import ServiceSvg from '@/assets/svg/service-v2.svg';
 import ShoppingSvg from '@/assets/svg/shopping.svg';
 import { SvgIcon } from '@/components/ui/svg-icon';
@@ -21,19 +23,31 @@ export function IconCategory({ category, size, rounded = false }: Readonly<Props
       );
     case 'shopping':
       return (
-        <SvgIcon size={size} rounded className="bg-[#FFF5D9]">
+        <SvgIcon size={size} rounded={rounded} className="bg-[#FFF5D9]">
           <ShoppingSvg className="fill-[#FFBB38]" />
         </SvgIcon>
       );
     case 'transfer':
       return (
-        <SvgIcon size={size} rounded className="bg-[#FFE0EB]">
+        <SvgIcon size={size} rounded={rounded} className="bg-[#FFE0EB]">
           <PersonSvg className="fill-[#FF82AC]" />
+        </SvgIcon>
+      );
+    case 'apple':
+      return (
+        <SvgIcon size={size} rounded={rounded} className="bg-[#DCFAF8]">
+          <AppleSvg className="fill-[#16DBCC]" />
+        </SvgIcon>
+      );
+    case 'playstation':
+      return (
+        <SvgIcon size={size} rounded={rounded} className="bg-[#E7EDFF]">
+          <PlaystationSvg className="fill-[#396AFF]" />
         </SvgIcon>
       );
     default:
       return (
-        <SvgIcon size={size} rounded className="bg-[#DCFAF8]">
+        <SvgIcon size={size} rounded={rounded} className="bg-[#DCFAF8]">
           <DollarSvg className="fill-[#16DBCC]" />
         </SvgIcon>
       );

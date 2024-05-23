@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 
+import { IconCategory } from '@/components/icon-category';
 import { Container } from '@/components/ui/container';
 import { Transaction } from '@/types';
 import { formatAmount, formateDate, maskCardNumber } from '@/utils';
-import { IconCategory } from './icon-category';
 
 type Props = {
   transactions: Transaction[];

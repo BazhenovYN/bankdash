@@ -7,12 +7,20 @@ import { StickerListSkeleton } from '@/components/sticker';
 
 export default function AccountsPage() {
   return (
-    <div className="flex flex-col gap-8">
-      <Suspense fallback={<StickerListSkeleton length={4} />}>
-        <AccountStickers />
-      </Suspense>
-      <RecentTransactionsList quantity={3} detailed />
-      <MyCards quantity={1} />
+    <div className="grid auto-rows-auto grid-cols-3 gap-8">
+      <div className="col-span-3">
+        <Suspense fallback={<StickerListSkeleton length={4} />}>
+          <AccountStickers />
+        </Suspense>
+      </div>
+      <div className="col-span-2">
+        <RecentTransactionsList quantity={3} detailed />
+      </div>
+      <div className="col-start-3">
+        <MyCards quantity={1} />
+      </div>
+      <div className="col-span-2">Debit & Credit Overview</div>
+      <div className="col-start-3">Invoices Sent</div>
     </div>
   );
 }

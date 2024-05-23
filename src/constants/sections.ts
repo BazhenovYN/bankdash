@@ -5,7 +5,7 @@ import CreditCardIcon from '@/assets/svg/credit-card.svg';
 import HomeIcon from '@/assets/svg/home.svg';
 import Investments from '@/assets/svg/investments.svg';
 import LoanIcon from '@/assets/svg/loan.svg';
-import ServiceIcon from '@/assets/svg/service.svg';
+import ServiceIcon from '@/assets/svg/service-v1.svg';
 import SettingsIcon from '@/assets/svg/settings.svg';
 import TransactionsIcon from '@/assets/svg/transactions.svg';
 

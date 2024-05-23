@@ -35,3 +35,26 @@ export type Transaction = {
   currency: Currency;
   status: TransactionStatus;
 };
+
+export type Balance = {
+  currentBalance: number;
+  income: number;
+  expense: number;
+  totalSaving: number;
+  currency: Currency;
+};
+
+export type TotalInvestStatistic = {
+  totalAmount: number;
+  numberOfInvestments: number;
+  rateOfReturn: number;
+  currency: Currency;
+};
+
+export type TotalLoansStatistic = {
+  personalLoans: number;
+  corporateLoans: number;
+  businessLoans: number;
+  educationLoans: number;
+  currency: Currency;
+};

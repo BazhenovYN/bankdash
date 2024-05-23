@@ -4,3 +4,9 @@ export const extendArray = <T>(arr: T[], size: number): (T | null)[] => {
   }
   return arr.concat(new Array(size - arr.length).fill(null));
 };
+
+export const delay = async (ms: number) => {
+  if (process.env.NODE_ENV === 'development') {
+    await new Promise((resolve) => setTimeout(resolve, ms));
+  }
+};

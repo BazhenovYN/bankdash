@@ -6,14 +6,15 @@ import { EmptyCard } from './empty-card';
 
 type Props = {
   quantity: number;
+  hideSeeAllLink?: boolean;
 };
 
-export async function MyCards({ quantity }: Readonly<Props>) {
+export async function MyCards({ quantity, hideSeeAllLink = false }: Readonly<Props>) {
   const userCards = await getUserCards();
   const displayedCards = extendArray(userCards, quantity);
 
   return (
-    <Container title="My cards" linkSeeAll="/credit-cards">
+    <Container title="My cards" linkSeeAll={hideSeeAllLink ? '' : '/credit-cards'}>
       <div className="flex gap-8">
         {displayedCards.map((card, index) => {
           if (card) {

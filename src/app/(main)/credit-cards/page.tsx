@@ -1,3 +1,4 @@
+import { AddNewCard } from '@/components/add-new-card';
 import { MyCards } from '@/components/my-cards';
 
 export default function CreditCardsPage() {
@@ -8,7 +9,9 @@ export default function CreditCardsPage() {
       </div>
       <div className="row-start-2">Card Expense Statistics</div>
       <div className="col-span-2">Card List</div>
-      <div className="col-span-2">Add New Card </div>
+      <div className="col-span-2">
+        <AddNewCard />
+      </div>
       <div className="col-start-3">Card Setting</div>
     </div>
   );

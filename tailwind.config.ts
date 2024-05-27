@@ -22,9 +22,11 @@ const config: Config = {
       },
       gray: {
         200: '#DFEAF2',
+        300: '#EBEEF2',
         400: '#B1B1B1',
         500: '#8BA3CB',
         600: '#718EBF',
+        900: '#232323',
       },
       green: {
         500: '#41D4A8',

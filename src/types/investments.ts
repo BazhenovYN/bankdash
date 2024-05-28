@@ -6,3 +6,11 @@ export type TotalInvestStatistic = {
   rateOfReturn: number;
   currency: Currency;
 };
+
+export type Stock = {
+  id: string;
+  name: string;
+  price: number;
+  currency: Currency;
+  return: number;
+};

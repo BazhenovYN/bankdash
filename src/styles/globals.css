@@ -23,6 +23,10 @@
     @apply py-2 lg:py-4;
   }
 
+  tbody tr:last-child > td {
+    @apply pb-0;
+  }
+
   tfoot {
     @apply border-t border-blue-400 text-red-400;
   }

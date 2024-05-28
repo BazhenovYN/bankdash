@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 
 import { InvestmentsStickers } from '@/components/investments-stickers';
 import { StickerListSkeleton } from '@/components/sticker';
+import { TrendingStock } from '@/components/trending-stock';
 
 export default function InvestmentsPage() {
   return (
@@ -14,7 +15,11 @@ export default function InvestmentsPage() {
       <div className="col-span-6">Yearly Total Investment</div>
       <div className="col-span-6 col-start-7">Monthly Revenue</div>
       <div className="col-span-7">My Investment</div>
-      <div className="col-span-5 col-start-8">Trending Stock</div>
+      <div className="col-span-5 col-start-8">
+        <Suspense fallback="Loading...">
+          <TrendingStock />
+        </Suspense>
+      </div>
     </div>
   );
 }

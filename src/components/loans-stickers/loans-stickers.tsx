@@ -1,5 +1,5 @@
 import { Sticker, StickerList } from '@/components/sticker';
-import { getTotalLoansStatistic } from '@/services/finances';
+import { getTotalLoansStatistic } from '@/services/loans';
 import { formatAmount } from '@/utils';
 import { BriefcaseIcon, GraphIcon, PersonIcon, SupportIcon } from './icons';
 

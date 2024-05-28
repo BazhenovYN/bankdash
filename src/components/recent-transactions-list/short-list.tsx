@@ -11,7 +11,7 @@ type Props = {
 export function ShortList({ transactions }: Readonly<Props>) {
   return (
     <Container title="Recent transactions" className="max-w-[350px]">
-      <div className="flex flex-col justify-between gap-2 rounded-3xl bg-white p-6">
+      <div className="white-background flex flex-col justify-between gap-2 p-6">
         {transactions.map((transaction) => (
           <div key={transaction.id} className="flex items-center justify-between">
             <div className="flex items-center gap-4">

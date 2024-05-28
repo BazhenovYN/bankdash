@@ -10,3 +10,8 @@ export const delay = async (ms: number) => {
     await new Promise((resolve) => setTimeout(resolve, ms));
   }
 };
+
+export const sliceData = <T>(data: T[], limit: number, currentPage: number): T[] => {
+  const start = limit * (currentPage - 1);
+  return data.slice(start, start + limit);
+};

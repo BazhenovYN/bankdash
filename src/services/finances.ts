@@ -1,10 +1,5 @@
-import {
-  currentBalance,
-  lastSentInvoices,
-  totalInvestmentStatistic,
-  totalLoansStatistic,
-} from '@/mocks/finances';
-import type { Balance, SentInvoice, TotalInvestStatistic, TotalLoansStatistic } from '@/types';
+import { currentBalance, lastSentInvoices, totalInvestmentStatistic } from '@/mocks/finances';
+import type { Balance, SentInvoice, TotalInvestStatistic } from '@/types';
 import { delay } from '@/utils';
 
 export const getCurrentBalance = async (): Promise<Balance> => {
@@ -15,11 +10,6 @@ export const getCurrentBalance = async (): Promise<Balance> => {
 export const getTotalInvestStatistic = async (): Promise<TotalInvestStatistic> => {
   await delay(2000);
   return totalInvestmentStatistic;
-};
-
-export const getTotalLoansStatistic = async (): Promise<TotalLoansStatistic> => {
-  await delay(2000);
-  return totalLoansStatistic;
 };
 
 export const getLastSentInvoices = async (): Promise<SentInvoice[]> => {

@@ -2,8 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  table {
+    @apply w-full text-left text-xs text-gray-900 lg:text-base;
+  }
+
+  thead {
+    @apply text-gray-600;
+  }
+
+  thead th {
+    @apply pb-2 font-medium;
+  }
+
+  tbody tr {
+    @apply border-t border-blue-400;
+  }
+
+  tbody td {
+    @apply py-2 lg:py-4;
+  }
+
+  tfoot {
+    @apply border-t border-blue-400 text-red-400;
+  }
+
+  tfoot th,
+  tfoot td {
+    @apply pt-2 font-medium;
+  }
+}
+
 @layer components {
   .link {
     @apply transition-colors hover:fill-blue-800 hover:text-blue-800;
+  }
+
+  .white-background {
+    @apply rounded-3xl bg-white;
   }
 }

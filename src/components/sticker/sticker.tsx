@@ -9,7 +9,7 @@ type Props = {
 
 export function Wrapper({ children }: Readonly<React.PropsWithChildren>) {
   return (
-    <div className="flex w-full max-w-[350px] items-center justify-center gap-4 rounded-3xl bg-white px-4 py-5 lg:py-6">
+    <div className="white-background flex w-full max-w-[350px] items-center justify-center gap-4 px-4 py-5 lg:py-6">
       {children}
     </div>
   );

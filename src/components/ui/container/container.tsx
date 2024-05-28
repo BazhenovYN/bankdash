@@ -27,7 +27,7 @@ export function Container({ children, className, title, linkSeeAll, linkAdd }: R
           )}
         </div>
       </div>
-      <div className="rounded-3xl">{children}</div>
+      <div>{children}</div>
     </div>
   );
 }

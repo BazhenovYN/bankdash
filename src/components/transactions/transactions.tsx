@@ -20,54 +20,40 @@ export async function Transactions({ limitPerPage, currentPage, type }: Props) {
 
   return (
     <>
-      <div className="rounded-3xl bg-white px-5 py-4 lg:p-8">
-        <table className="hidden w-full text-left text-xs text-gray-900 md:table lg:text-base">
-          <thead className=" text-gray-600">
+      <div className="white-background px-5 py-4 lg:p-8">
+        <table className="hidden md:table">
+          <thead>
             <tr>
-              <th scope="col" className="pb-2 font-medium">
-                Description
-              </th>
-              <th scope="col" className="pb-2 font-medium">
-                Transaction ID
-              </th>
-              <th scope="col" className="pb-2 font-medium">
-                Type
-              </th>
-              <th scope="col" className="pb-2 font-medium">
-                Card
-              </th>
-              <th scope="col" className="pb-2 font-medium">
-                Date
-              </th>
-              <th scope="col" className="pb-2 font-medium">
-                Amount
-              </th>
-              <th scope="col" className="pb-2 font-medium">
-                Receipt
-              </th>
+              <th scope="col">Description</th>
+              <th scope="col">Transaction ID</th>
+              <th scope="col">Type</th>
+              <th scope="col">Card</th>
+              <th scope="col">Date</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Receipt</th>
             </tr>
           </thead>
           <tbody>
             {transactions.map((transaction) => (
-              <tr key={transaction.id} className="border-t border-blue-400">
-                <td className="py-2 lg:py-4">
+              <tr key={transaction.id}>
+                <td>
                   <div className="inline-flex items-center gap-3.5">
                     <Icon type={transaction.type} />
                     <div className="capitalize">{transaction.description}</div>
                   </div>
                 </td>
-                <td className="py-2 lg:py-4">{transaction.id}</td>
-                <td className="py-2 capitalize lg:py-4">{transaction.category}</td>
-                <td className="py-2 lg:py-4">{maskCardNumber(transaction.card, 'end')}</td>
-                <td className="py-2 lg:py-4">{formateDate(transaction.date, 'DD MMM, hh:mm A')}</td>
-                <td className="py-2 lg:py-4">
+                <td>{transaction.id}</td>
+                <td className="capitalize">{transaction.category}</td>
+                <td>{maskCardNumber(transaction.card, 'end')}</td>
+                <td>{formateDate(transaction.date, 'DD MMM, hh:mm A')}</td>
+                <td>
                   <ColoredAmount
                     amount={transaction.amount}
                     currency={transaction.currency}
                     type={transaction.type}
                   />
                 </td>
-                <td className="w-px whitespace-nowrap py-2 lg:py-4">
+                <td className="w-px whitespace-nowrap">
                   <Button variant="outlined">Download</Button>
                 </td>
               </tr>

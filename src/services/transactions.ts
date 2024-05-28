@@ -2,6 +2,7 @@ import { unstable_noStore as noStore } from 'next/cache';
 
 import { transactions } from '@/mocks/transactions';
 import type { Transaction, TransactionType } from '@/types';
+import { sliceData } from '@/utils';
 
 const getTransactionsByType = async (type?: TransactionType) => {
   if (type) {
@@ -17,8 +18,7 @@ export const getLastTransactions = async (
 ): Promise<Transaction[]> => {
   noStore();
   const data = await getTransactionsByType(type);
-  const start = limit * (currentPage - 1);
-  return data.slice(start, start + limit);
+  return sliceData(data, limit, currentPage);
 };
 
 export const getTransactionsTotalPages = async (limitPerPage: number, type?: TransactionType) => {

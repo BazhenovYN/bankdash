@@ -11,12 +11,12 @@ type Props = {
 export function DetailedList({ transactions }: Readonly<Props>) {
   return (
     <Container title="Recent transactions" className="max-w-[730px]">
-      <div className="rounded-3xl bg-white p-4">
-        <table className="w-full">
+      <div className="white-background p-6">
+        <table>
           <tbody>
             {transactions.map((transaction) => (
-              <tr key={transaction.id}>
-                <td className="px-2 py-1">
+              <tr key={transaction.id} className="border-none [&>td]:py-1">
+                <td>
                   <IconCategory category={transaction.category} size="sm" />
                 </td>
                 <td>

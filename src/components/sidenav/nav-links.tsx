@@ -12,7 +12,7 @@ export function NavLinks() {
     <ul className="mt-3 w-full list-none">
       {sections.map((section) => {
         const LinkIcon = section.icon;
-        const isActive = pathname === section.href;
+        const isActive = pathname.startsWith(section.href);
         return (
           <li
             key={section.id}
@@ -22,7 +22,7 @@ export function NavLinks() {
             )}
           >
             <div
-              className={clsx('mr-0.5 h-[50px] w-[5px]  rounded-r-[10px] lg:h-[60px] lg:w-[6px]', {
+              className={clsx('mr-0.5 h-[50px] w-[5px] rounded-r-[10px] lg:h-[60px] lg:w-[6px]', {
                 'bg-blue-600': isActive,
               })}
             ></div>

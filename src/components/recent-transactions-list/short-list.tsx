@@ -1,9 +1,8 @@
-import clsx from 'clsx';
-
+import { ColoredAmount } from '@/components/colored-amount';
 import { IconCategory } from '@/components/icon-category';
 import { Container } from '@/components/ui/container';
 import { Transaction } from '@/types';
-import { formatAmount, formateDate } from '@/utils';
+import { formateDate } from '@/utils';
 
 type Props = {
   transactions: Transaction[];
@@ -12,7 +11,7 @@ type Props = {
 export function ShortList({ transactions }: Readonly<Props>) {
   return (
     <Container title="Recent transactions" className="max-w-[350px]">
-      <div className="flex flex-col justify-between gap-2 bg-white p-6">
+      <div className="flex flex-col justify-between gap-2 rounded-3xl bg-white p-6">
         {transactions.map((transaction) => (
           <div key={transaction.id} className="flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -22,15 +21,11 @@ export function ShortList({ transactions }: Readonly<Props>) {
                 <div className="text-gray-600">{formateDate(transaction.date, 'DD MMMM YYYY')}</div>
               </div>
             </div>
-            <div
-              className={clsx({
-                'text-green-500': transaction.type === 'income',
-                'text-red-500': transaction.type === 'expense',
-              })}
-            >
-              {transaction.type === 'income' ? '+' : '-'}
-              {formatAmount(transaction.amount, transaction.currency)}
-            </div>
+            <ColoredAmount
+              amount={transaction.amount}
+              currency={transaction.currency}
+              type={transaction.type}
+            />
           </div>
         ))}
       </div>

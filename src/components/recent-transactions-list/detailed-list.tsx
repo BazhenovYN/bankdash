@@ -1,9 +1,8 @@
-import clsx from 'clsx';
-
+import { ColoredAmount } from '@/components/colored-amount';
 import { IconCategory } from '@/components/icon-category';
 import { Container } from '@/components/ui/container';
 import { Transaction } from '@/types';
-import { formatAmount, formateDate, maskCardNumber } from '@/utils';
+import { formateDate, maskCardNumber } from '@/utils';
 
 type Props = {
   transactions: Transaction[];
@@ -12,7 +11,7 @@ type Props = {
 export function DetailedList({ transactions }: Readonly<Props>) {
   return (
     <Container title="Recent transactions" className="max-w-[730px]">
-      <div className="bg-white p-4">
+      <div className="rounded-3xl bg-white p-4">
         <table className="w-full">
           <tbody>
             {transactions.map((transaction) => (
@@ -34,15 +33,12 @@ export function DetailedList({ transactions }: Readonly<Props>) {
                 </td>
                 <td className="capitalize text-gray-600">{transaction.status}</td>
                 <td>
-                  <div
-                    className={clsx('text-end', {
-                      'text-green-500': transaction.type === 'income',
-                      'text-red-500': transaction.type === 'expense',
-                    })}
-                  >
-                    {transaction.type === 'income' ? '+' : '-'}
-                    {formatAmount(transaction.amount, transaction.currency)}
-                  </div>
+                  <ColoredAmount
+                    amount={transaction.amount}
+                    currency={transaction.currency}
+                    type={transaction.type}
+                    className="text-end"
+                  />
                 </td>
               </tr>
             ))}

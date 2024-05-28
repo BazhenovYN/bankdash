@@ -21,10 +21,14 @@ export function Tab({ href = '', className, children }: Props) {
       <button
         role="tab"
         onClick={handleTabClick}
-        className={clsx(className, 'link px-3.5 text-sm font-medium capitalize lg:text-base', {
-          'text-gray-600': !isActive,
-          'text-blue-800': isActive,
-        })}
+        className={clsx(
+          className,
+          'link px-3.5 text-xs font-medium capitalize md:text-sm lg:text-base',
+          {
+            'text-gray-600': !isActive,
+            'text-blue-800': isActive,
+          }
+        )}
       >
         {children}
       </button>

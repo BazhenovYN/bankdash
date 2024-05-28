@@ -56,4 +56,15 @@ export const transactions: Transaction[] = [
     date: new Date(2024, 5, 2, 9, 5, 12),
     status: 'completed',
   },
+  {
+    id: '#123456784',
+    description: 'Jack Jackson',
+    category: 'transfer',
+    type: 'expense',
+    card: '3778570012541234',
+    amount: 20,
+    currency: 'USD',
+    date: new Date(2024, 5, 2, 9, 4, 8),
+    status: 'completed',
+  },
 ];

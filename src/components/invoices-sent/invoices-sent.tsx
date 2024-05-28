@@ -7,7 +7,7 @@ export async function InvoicesSent() {
   const invoices = await getLastSentInvoices();
   return (
     <Container title="Invoices sent">
-      <div className="flex flex-col justify-between gap-4 bg-white p-5 lg:gap-5 lg:px-6 lg:py-7">
+      <div className="flex flex-col justify-between gap-4 rounded-3xl bg-white p-5 lg:gap-5 lg:px-6 lg:py-7">
         {invoices.map((invoice) => (
           <div key={invoice.id} className="flex items-center justify-between">
             <div className="flex items-center gap-3 lg:gap-4">

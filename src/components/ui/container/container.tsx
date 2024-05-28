@@ -15,11 +15,19 @@ export function Container({ children, className, title, linkSeeAll, linkAdd }: R
       <div className="flex justify-between font-semibold capitalize text-blue-900">
         <h3 className="font-semibold capitalize lg:text-xl">{title}</h3>
         <div className="flex gap-4">
-          {linkAdd && <Link href={linkAdd}>+ Add</Link>}
-          {linkSeeAll && <Link href={linkSeeAll}>See all</Link>}
+          {linkAdd && (
+            <Link href={linkAdd} className="link">
+              + Add
+            </Link>
+          )}
+          {linkSeeAll && (
+            <Link href={linkSeeAll} className="link">
+              See all
+            </Link>
+          )}
         </div>
       </div>
-      <div className="overflow-hidden rounded-3xl">{children}</div>
+      <div className="rounded-3xl">{children}</div>
     </div>
   );
 }

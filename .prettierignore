@@ -1,1 +1,4 @@
 .next
+dist
+public
+pnpm-lock.yaml

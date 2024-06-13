@@ -1,0 +1,123 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  version   Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  bankAccounts BankAccount[]
+  transactions Transaction[]
+
+  @@map("users")
+}
+
+model BankAccount {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
+  currencyId String
+  currency   Currency @relation(fields: [currencyId], references: [id])
+
+  cards        Card[]
+  balance      Balance[]
+  transactions Transaction[]
+
+  @@map("bank_accounts")
+}
+
+model Balance {
+  id        String   @id @default(uuid())
+  balance   Decimal
+  changedAt DateTime @default(now())
+
+  bankAccountId String
+  bankAccount   BankAccount @relation(fields: [bankAccountId], references: [id])
+}
+
+model Card {
+  id             String   @id @default(uuid())
+  cardNumber     String   @unique
+  cardHolder     String
+  expirationDate DateTime
+  cvv            String
+  createdAt      DateTime @default(now())
+
+  bankAccountId String
+  bankAccount   BankAccount @relation(fields: [bankAccountId], references: [id])
+
+  paymentServiceId String
+  paymentService   PaymentService @relation(fields: [paymentServiceId], references: [id])
+
+  transactions Transaction[]
+
+  @@map("cards")
+}
+
+model Transaction {
+  id              String   @id @default(uuid())
+  isIncome        Boolean
+  amount          Decimal
+  description     String
+  category        String
+  transactionDate DateTime @default(now())
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
+  bankAccountId String
+  bankAccount   BankAccount @relation(fields: [bankAccountId], references: [id])
+
+  cardId String
+  card   Card   @relation(fields: [cardId], references: [id])
+
+  currencyId String
+  currency   Currency @relation(fields: [currencyId], references: [id])
+
+  statusId String
+  status   TransactionStatus @relation(fields: [statusId], references: [id])
+
+  @@map("transactions")
+}
+
+model Currency {
+  id   String @id @default(uuid())
+  code String @unique
+  name String
+
+  accounts     BankAccount[]
+  transactions Transaction[]
+
+  @@map("currency")
+}
+
+model TransactionStatus {
+  id   String @id @default(uuid())
+  name String @unique
+
+  transactions Transaction[]
+
+  @@map("transaction_statuses")
+}
+
+model PaymentService {
+  id   String @id @default(uuid())
+  name String @unique
+
+  cards Card[]
+
+  @@map("payment_services")
+}

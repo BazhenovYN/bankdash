@@ -1,7 +1,6 @@
-import { Currency } from '@web/types';
 import dayjs from 'dayjs';
 
-export const formatAmount = (amount: number, currency: Currency): string => {
+export const formatAmount = (amount: number, currency: string): string => {
   const options = { style: 'currency', currency };
   const numberFormat = new Intl.NumberFormat('en-US', options);
 

@@ -1,4 +1,4 @@
-import { getLastTransactions } from '@web/services/transactions';
+import { trpc } from '@web/app/trpc';
 import { DetailedList } from './detailed-list';
 import { ShortList } from './short-list';
 
@@ -8,11 +8,13 @@ type Props = {
 };
 
 export async function RecentTransactionsList({ quantity, detailed = false }: Readonly<Props>) {
-  const transactions = await getLastTransactions(quantity);
+  const { data } = await trpc.transactions.getLastTransactions.query({
+    limitPerPage: quantity,
+  });
 
   if (detailed) {
-    return <DetailedList transactions={transactions} />;
+    return <DetailedList transactions={data} />;
   }
 
-  return <ShortList transactions={transactions} />;
+  return <ShortList transactions={data} />;
 }

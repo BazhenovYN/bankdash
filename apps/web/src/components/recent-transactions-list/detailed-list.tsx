@@ -1,11 +1,11 @@
 import { ColoredAmount } from '@web/components/colored-amount';
 import { IconCategory } from '@web/components/icon-category';
 import { Container } from '@web/components/ui/container';
-import { Transaction } from '@web/types';
+import { LastTransactionsOutput } from '@web/types';
 import { formateDate, maskCardNumber } from '@web/utils';
 
 type Props = {
-  transactions: Transaction[];
+  transactions: LastTransactionsOutput['data'];
 };
 
 export function DetailedList({ transactions }: Readonly<Props>) {
@@ -36,7 +36,7 @@ export function DetailedList({ transactions }: Readonly<Props>) {
                   <ColoredAmount
                     amount={transaction.amount}
                     currency={transaction.currency}
-                    type={transaction.type}
+                    isIncome={transaction.isIncome}
                     className="text-end"
                   />
                 </td>

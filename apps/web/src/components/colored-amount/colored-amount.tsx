@@ -1,23 +1,22 @@
 import clsx from 'clsx';
 
-import { Currency, TransactionType } from '@web/types';
 import { formatAmount } from '@web/utils';
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
   amount: number;
-  currency: Currency;
-  type: TransactionType;
+  currency: string;
+  isIncome: boolean;
 }
 
-export function ColoredAmount({ amount, currency, type, className }: Props) {
+export function ColoredAmount({ amount, currency, isIncome, className }: Props) {
   return (
     <div
       className={clsx(className, {
-        'text-green-500': type === 'income',
-        'text-red-500': type === 'expense',
+        'text-green-500': isIncome,
+        'text-red-500': !isIncome,
       })}
     >
-      {type === 'income' ? '+' : '-'}
+      {isIncome ? '+' : '-'}
       {formatAmount(amount, currency)}
     </div>
   );

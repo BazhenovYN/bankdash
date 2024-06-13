@@ -1,10 +1,13 @@
-import type { AppRouter } from '@api/trpc/trpc.router';
 import { createTRPCProxyClient, httpBatchLink } from '@trpc/client';
+import superjson from 'superjson';
+
+import type { AppRouter } from '@api/trpc';
 
 export const trpc = createTRPCProxyClient<AppRouter>({
   links: [
     httpBatchLink({
-      url: `${process.env.NEXT_PUBLIC_NESTJS_SERVER}/trpc`,
+      url: `${process.env.NEXT_API_SERVER}/trpc`,
     }),
   ],
+  transformer: superjson,
 });

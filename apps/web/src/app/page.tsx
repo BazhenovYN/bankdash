@@ -1,8 +1,9 @@
-import { trpc } from '@web/app/trpc';
 import Link from 'next/link';
 
+import { trpc } from '@web/app/trpc';
+
 export default async function HomePage() {
-  const { greeting } = await trpc.hello.query({ name: `Tom` });
+  const { greeting } = await trpc.hello.query({ name: `Tom1` });
   return (
     <div>
       <div>Home Page</div>

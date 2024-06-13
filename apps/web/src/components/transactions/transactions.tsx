@@ -1,7 +1,7 @@
+import { trpc } from '@web/app/trpc';
 import { ColoredAmount } from '@web/components/colored-amount';
 import { Button } from '@web/components/ui/button';
 import { Pagination } from '@web/components/ui/pagination';
-import { getLastTransactions, getTransactionsTotalPages } from '@web/services/transactions';
 import { TransactionType } from '@web/types';
 import { formateDate, maskCardNumber } from '@web/utils';
 import { Icon } from './icons';
@@ -13,10 +13,11 @@ type Props = {
 };
 
 export async function Transactions({ limitPerPage, currentPage, type }: Props) {
-  const [transactions, totalPages] = await Promise.all([
-    getLastTransactions(limitPerPage, currentPage, type),
-    getTransactionsTotalPages(limitPerPage, type),
-  ]);
+  const { data, info } = await trpc.transactions.getLastTransactions.query({
+    limitPerPage,
+    currentPage,
+    type,
+  });
 
   return (
     <>
@@ -34,11 +35,11 @@ export async function Transactions({ limitPerPage, currentPage, type }: Props) {
             </tr>
           </thead>
           <tbody>
-            {transactions.map((transaction) => (
+            {data.map((transaction) => (
               <tr key={transaction.id}>
                 <td>
                   <div className="inline-flex items-center gap-3.5">
-                    <Icon type={transaction.type} />
+                    <Icon isIncome={transaction.isIncome} />
                     <div className="capitalize">{transaction.description}</div>
                   </div>
                 </td>
@@ -50,7 +51,7 @@ export async function Transactions({ limitPerPage, currentPage, type }: Props) {
                   <ColoredAmount
                     amount={transaction.amount}
                     currency={transaction.currency}
-                    type={transaction.type}
+                    isIncome={transaction.isIncome}
                   />
                 </td>
                 <td className="w-px whitespace-nowrap">
@@ -61,13 +62,13 @@ export async function Transactions({ limitPerPage, currentPage, type }: Props) {
           </tbody>
         </table>
         <div className="md:hidden">
-          {transactions.map((transaction) => (
+          {data.map((transaction) => (
             <div
               key={transaction.id}
               className="flex items-center justify-between border-b border-blue-400 py-2 first:pt-0 last:border-none last:pb-0"
             >
               <div className="inline-flex items-center gap-3">
-                <Icon type={transaction.type} />
+                <Icon isIncome={transaction.isIncome} />
                 <div>
                   <div className="text-xs font-medium capitalize text-gray-900">
                     {transaction.description}
@@ -80,7 +81,7 @@ export async function Transactions({ limitPerPage, currentPage, type }: Props) {
               <ColoredAmount
                 amount={transaction.amount}
                 currency={transaction.currency}
-                type={transaction.type}
+                isIncome={transaction.isIncome}
                 className="text-xs"
               />
             </div>
@@ -88,7 +89,7 @@ export async function Transactions({ limitPerPage, currentPage, type }: Props) {
         </div>
       </div>
       <div className="mt-4 flex justify-end md:mt-5 lg:mt-8">
-        <Pagination totalPages={totalPages} />
+        <Pagination totalPages={info.totalPages} />
       </div>
     </>
   );

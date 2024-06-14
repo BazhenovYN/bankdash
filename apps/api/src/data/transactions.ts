@@ -1,10 +1,11 @@
 import { TransactionType } from '@api/types';
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient, User } from '@prisma/client';
 
 import { getShortTransactionId } from './adapter';
 
 export async function getLastTransactions(
   prisma: PrismaClient,
+  user: User,
   limitPerPage: number,
   currentPage: number,
   type?: TransactionType
@@ -34,6 +35,7 @@ export async function getLastTransactions(
       },
     },
     where: {
+      userId: user.id,
       isIncome: type && type === 'income',
     },
     orderBy: {
@@ -57,11 +59,13 @@ export async function getLastTransactions(
 
 export async function getTransactionsTotalPages(
   prisma: PrismaClient,
+  user: User,
   limitPerPage: number,
   type?: TransactionType
 ) {
   const count = await prisma.transaction.count({
     where: {
+      userId: user.id,
       isIncome: type && type === 'income',
     },
   });

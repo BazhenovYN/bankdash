@@ -12,10 +12,10 @@ export const transactionsRouter = router({
         type: z.enum(['income', 'expense']).optional(),
       })
     )
-    .query(async ({ input, ctx: { prisma } }) => {
+    .query(async ({ input, ctx: { prisma, user } }) => {
       const { limitPerPage, currentPage, type } = input;
-      const data = await getLastTransactions(prisma, limitPerPage, currentPage, type);
-      const totalPages = await getTransactionsTotalPages(prisma, limitPerPage, type);
+      const data = await getLastTransactions(prisma, user, limitPerPage, currentPage, type);
+      const totalPages = await getTransactionsTotalPages(prisma, user, limitPerPage, type);
       return {
         data,
         info: {

@@ -1,3 +1,4 @@
+import { createUser } from '@api/data';
 import {
   BankAccount,
   Card,
@@ -79,10 +80,10 @@ async function createUserData(
   paymentServices: PaymentService[],
   transactionStatuses: TransactionStatus[]
 ) {
-  const user = await prisma.user.upsert({
-    where: { email: 'jane-doe@gmail.com' },
-    create: { name: 'Jane Doe', email: 'jane-doe@gmail.com', password: '', version: 1 },
-    update: { name: 'Jane Doe', email: 'jane-doe@gmail.com', password: '', version: 1 },
+  const user = await createUser(prisma, {
+    name: 'Jane Doe',
+    password: '123456',
+    email: 'jane-doe@gmail.com',
   });
 
   const account = await prisma.bankAccount.create({

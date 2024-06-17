@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "incremental": true,
@@ -11,10 +10,6 @@
     "strictBindCallApply": true,
     "removeComments": true,
     "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "paths": {
-      "@api/*": ["./apps/api/src/*"],
-      "@web/*": ["./apps/web/src/*"]
-    }
+    "noFallthroughCasesInSwitch": true
   }
 }

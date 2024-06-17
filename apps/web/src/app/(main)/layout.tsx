@@ -1,6 +1,8 @@
 import { Header } from '@web/components/header';
 import { SideNav } from '@web/components/sidenav';
 
+export const dynamic = 'force-dynamic';
+
 export default function MainLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <>

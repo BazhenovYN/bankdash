@@ -2,7 +2,8 @@ import { FastifyTRPCPluginOptions, fastifyTRPCPlugin } from '@trpc/server/adapte
 import { FastifyInstance } from 'fastify';
 import fp from 'fastify-plugin';
 
-import { appRouter, createContext, type AppRouter } from '@api/trpc';
+import { appRouter, type AppRouter } from '@api/trpc';
+import { createContext } from '@api/trpc/context';
 
 const TRPC_ENDPOINT = '/trpc';
 

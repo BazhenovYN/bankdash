@@ -1,4 +1,4 @@
-import type { AppRouter } from '@api/trpc';
+import type { AppRouter } from '@bankdash/api';
 import type { inferRouterInputs, inferRouterOutputs } from '@trpc/server';
 
 type RouterInput = inferRouterInputs<AppRouter>;

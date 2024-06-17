@@ -1,5 +1,5 @@
 {
-  "name": "web",
+  "name": "@bankdash/web",
   "version": "0.1.0",
   "description": "",
   "private": true,
@@ -15,8 +15,8 @@
     "format:fix": "prettier --write ."
   },
   "dependencies": {
+    "@bankdash/api": "workspace:^",
     "@trpc/client": "^10.45.2",
-    "@trpc/next": "^10.45.2",
     "@trpc/server": "^10.45.2",
     "autoprefixer": "^10.4.19",
     "clsx": "^2.1.1",

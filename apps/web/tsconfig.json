@@ -21,7 +21,10 @@
     ],
     "types": ["vitest/globals"],
     "skipLibCheck": true,
-    "incremental": true
+    "incremental": true,
+    "paths": {
+      "@web/*": ["./src/*"]
+    }
   },
   "include": [
     "next-env.d.ts",

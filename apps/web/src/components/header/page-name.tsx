@@ -1,6 +1,6 @@
 'use client';
 
-import { sections } from '@web/constants/sections';
+import { sections } from '@web/constants';
 import { usePathname } from 'next/navigation';
 
 export function PageName() {

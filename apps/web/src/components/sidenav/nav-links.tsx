@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import { sections } from '@web/constants/sections';
+import { sections } from '@web/constants';
 
 export function NavLinks() {
   const pathname = usePathname();

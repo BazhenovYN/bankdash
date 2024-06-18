@@ -1,7 +1,7 @@
-import { trpc } from '@web/app/trpc';
 import { ColoredAmount } from '@web/components/colored-amount';
 import { Button } from '@web/components/ui/button';
 import { Pagination } from '@web/components/ui/pagination';
+import { trpc } from '@web/lib/trpc';
 import { TransactionType } from '@web/types';
 import { formateDate, maskCardNumber } from '@web/utils';
 import { Icon } from './icons';

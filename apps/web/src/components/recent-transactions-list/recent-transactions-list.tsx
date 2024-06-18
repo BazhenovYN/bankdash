@@ -1,4 +1,4 @@
-import { trpc } from '@web/app/trpc';
+import { trpc } from '@web/lib/trpc';
 import { DetailedList } from './detailed-list';
 import { ShortList } from './short-list';
 

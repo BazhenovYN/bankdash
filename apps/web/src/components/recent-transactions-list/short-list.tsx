@@ -1,11 +1,11 @@
 import { ColoredAmount } from '@web/components/colored-amount';
 import { IconCategory } from '@web/components/icon-category';
 import { Container } from '@web/components/ui/container';
-import { LastTransactionsOutput } from '@web/types';
+import { LastTransactions } from '@web/types';
 import { formateDate } from '@web/utils';
 
 type Props = {
-  transactions: LastTransactionsOutput['data'];
+  transactions: LastTransactions['data'];
 };
 
 export function ShortList({ transactions }: Readonly<Props>) {

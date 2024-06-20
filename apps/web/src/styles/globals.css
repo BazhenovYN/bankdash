@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  h4 {
+    @apply mt-5 text-base font-medium capitalize text-blue-900 lg:mt-7 lg:text-lg;
+  }
+
   table {
     @apply w-full text-left text-xs text-gray-900 lg:text-base;
   }

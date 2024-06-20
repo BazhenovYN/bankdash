@@ -9,9 +9,8 @@
   "scripts": {
     "dev": "pnpm run --parallel dev",
     "lint": "pnpm run --parallel lint",
+    "format": "pnpm run --parallel format",
     "test": "pnpm run --parallel test",
-    "format": "prettier --check .",
-    "format:fix": "prettier --write .",
     "build:api": "pnpm --filter api build",
     "build:web": "pnpm --filter web build",
     "start:api": "pnpm --filter api start:prod",
@@ -31,7 +30,6 @@
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "husky": "^9.0.11",
-    "lint-staged": "^15.2.7",
-    "prettier": "^3.3.2"
+    "lint-staged": "^15.2.7"
   }
 }

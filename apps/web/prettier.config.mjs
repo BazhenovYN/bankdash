@@ -1,7 +1,9 @@
 /** @type {import('prettier').Config} **/
 import prettierConfig from '@bankdash/prettier-config';
 
-export default {
+const config = {
   ...prettierConfig,
   plugins: ['prettier-plugin-tailwindcss'],
 };
+
+export default config;

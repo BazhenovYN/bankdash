@@ -1,10 +1,10 @@
 import { createCallerFactory, router } from './router';
-import { authRouter } from './routers/auth';
-import { transactionsRouter } from './routers/transactions';
+import { authRouter, transactionsRouter, userRouter } from './routers';
 
 export const appRouter = router({
   transactions: transactionsRouter,
   auth: authRouter,
+  user: userRouter,
 });
 
 export type AppRouter = typeof appRouter;

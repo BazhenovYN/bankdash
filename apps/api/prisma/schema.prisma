@@ -8,18 +8,53 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  name      String
-  email     String   @unique
-  password  String
-  version   Int
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id       String @id @default(uuid())
+  name     String
+  email    String @unique
+  password String
 
   bankAccounts BankAccount[]
   transactions Transaction[]
 
+  profile     UserProfile?
+  preferences UserPreferences?
+
   @@map("users")
+}
+
+model UserProfile {
+  userId           String   @id
+  dateOfBirth      DateTime
+  firstName        String
+  lastName         String
+  presentAddress   String
+  permanentAddress String
+  city             String
+  postalCode       String
+  img              String
+
+  countryId String
+  country   Country @relation(fields: [countryId], references: [id])
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("user_profiles")
+}
+
+model UserPreferences {
+  userId                String  @id
+  timezone              String
+  twoFactorAuth         Boolean @default(false)
+  sendOrReceiveCurrency Boolean @default(false)
+  receiveMerchantOrder  Boolean @default(false)
+  recommendation        Boolean @default(false)
+
+  currencyId String
+  currency   Currency @relation(fields: [currencyId], references: [id])
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("user_preferences")
 }
 
 model BankAccount {
@@ -27,7 +62,7 @@ model BankAccount {
   createdAt DateTime @default(now())
 
   userId String
-  user   User   @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   currencyId String
   currency   Currency @relation(fields: [currencyId], references: [id])
@@ -45,7 +80,7 @@ model Balance {
   changedAt DateTime @default(now())
 
   bankAccountId String
-  bankAccount   BankAccount @relation(fields: [bankAccountId], references: [id])
+  bankAccount   BankAccount @relation(fields: [bankAccountId], references: [id], onDelete: Cascade)
 }
 
 model Card {
@@ -57,7 +92,7 @@ model Card {
   createdAt      DateTime @default(now())
 
   bankAccountId String
-  bankAccount   BankAccount @relation(fields: [bankAccountId], references: [id])
+  bankAccount   BankAccount @relation(fields: [bankAccountId], references: [id], onDelete: Cascade)
 
   paymentServiceId String
   paymentService   PaymentService @relation(fields: [paymentServiceId], references: [id])
@@ -76,13 +111,13 @@ model Transaction {
   transactionDate DateTime @default(now())
 
   userId String
-  user   User   @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   bankAccountId String
-  bankAccount   BankAccount @relation(fields: [bankAccountId], references: [id])
+  bankAccount   BankAccount @relation(fields: [bankAccountId], references: [id], onDelete: Cascade)
 
   cardId String
-  card   Card   @relation(fields: [cardId], references: [id])
+  card   Card   @relation(fields: [cardId], references: [id], onDelete: Cascade)
 
   currencyId String
   currency   Currency @relation(fields: [currencyId], references: [id])
@@ -98,8 +133,9 @@ model Currency {
   code String @unique
   name String
 
-  accounts     BankAccount[]
-  transactions Transaction[]
+  accounts        BankAccount[]
+  transactions    Transaction[]
+  userPreferences UserPreferences[]
 
   @@map("currency")
 }
@@ -120,4 +156,14 @@ model PaymentService {
   cards Card[]
 
   @@map("payment_services")
+}
+
+model Country {
+  id   String @id @default(uuid())
+  name String
+  code String @unique
+
+  userProfiles UserProfile[]
+
+  @@map("countries")
 }

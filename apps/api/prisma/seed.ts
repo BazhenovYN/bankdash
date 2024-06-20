@@ -16,6 +16,7 @@ async function main() {
     createCurrency(),
     createTransactionStatuses(),
     createPaymentServices(),
+    createCountries(),
   ]);
   await createUserData(currency, paymentServices, transactionStatuses);
 }
@@ -75,6 +76,26 @@ async function createPaymentServices() {
   ]);
 }
 
+async function createCountries() {
+  return Promise.all([
+    prisma.country.upsert({
+      where: { code: 'US' },
+      create: { code: 'US', name: 'United States' },
+      update: { code: 'US', name: 'United States' },
+    }),
+    prisma.country.upsert({
+      where: { code: 'GB' },
+      create: { code: 'GB', name: 'United Kingdom' },
+      update: { code: 'GB', name: 'United Kingdom' },
+    }),
+    prisma.country.upsert({
+      where: { code: 'DE' },
+      create: { code: 'DE', name: 'Germany' },
+      update: { code: 'DE', name: 'Germany' },
+    }),
+  ]);
+}
+
 async function createUserData(
   currency: Currency[],
   paymentServices: PaymentService[],
@@ -125,7 +146,43 @@ async function createUserData(
     ],
   });
 
+  await createUserProfile(user);
+  await createUserPreferences(user, currency[0]);
   await createTransactions(user, account, primaryCard, currency[0], transactionStatuses);
+}
+
+async function createUserProfile(user: User) {
+  const country = await prisma.country.findUnique({
+    where: {
+      code: 'US',
+    },
+  });
+  await prisma.userProfile.create({
+    data: {
+      userId: user.id,
+      firstName: 'Jane',
+      lastName: 'Doe',
+      dateOfBirth: new Date(Date.UTC(1990, 0, 25)),
+      city: 'San Jose',
+      postalCode: '45962',
+      presentAddress: 'San Jose, California, USA',
+      permanentAddress: 'San Jose, California, USA',
+      countryId: country?.id ?? '',
+      img: '/img/user.png',
+    },
+  });
+}
+
+async function createUserPreferences(user: User, currency: Currency) {
+  await prisma.userPreferences.create({
+    data: {
+      userId: user.id,
+      sendOrReceiveCurrency: true,
+      recommendation: true,
+      currencyId: currency.id,
+      timezone: 'America/Los_Angeles',
+    },
+  });
 }
 
 async function createTransactions(
@@ -158,7 +215,7 @@ async function createTransactions(
         amount: 340,
         currencyId: currency.id,
         isIncome: false,
-        statusId: transactionStatuses[0].id,
+        statusId: transactionStatuses[1].id,
         transactionDate: new Date(Date.UTC(2024, 5, 18, 14, 22, 12)),
       },
       {

@@ -35,6 +35,9 @@ const config: Config = {
         400: '#FE5C73',
         500: '#FF4B4A',
       },
+      teal: {
+        500: '#16DBCC',
+      },
       transparent: colors.transparent,
       white: colors.white,
       black: colors.black,
@@ -53,6 +56,14 @@ const config: Config = {
       },
       invert: {
         70: '.70',
+      },
+      width: {
+        ...defaultTheme.width,
+        '15': '60px',
+      },
+      minWidth: {
+        ...defaultTheme.minWidth,
+        '15': '60px',
       },
     },
   },

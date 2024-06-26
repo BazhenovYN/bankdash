@@ -1,0 +1,12 @@
+{
+  "name": "@bankdash/prettier-config",
+  "version": "1.0.0",
+  "main": "index.mjs",
+  "type": "module",
+  "author": "",
+  "license": "MIT",
+  "description": "Basic Prettier config",
+  "devDependencies": {
+    "prettier": "^3.3.2"
+  }
+}

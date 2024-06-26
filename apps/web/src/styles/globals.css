@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h4 {
+    @apply mt-5 text-base font-medium capitalize text-blue-900 lg:mt-7 lg:text-lg;
+  }
+
+  table {
+    @apply w-full text-left text-xs text-gray-900 lg:text-base;
+  }
+
+  thead {
+    @apply text-gray-600;
+  }
+
+  thead th {
+    @apply pb-2 font-medium;
+  }
+
+  tbody tr {
+    @apply border-t border-blue-400;
+  }
+
+  tbody td {
+    @apply py-2 lg:py-4;
+  }
+
+  tbody tr:last-child > td {
+    @apply pb-0;
+  }
+
+  tfoot {
+    @apply border-t border-blue-400 text-red-400;
+  }
+
+  tfoot th,
+  tfoot td {
+    @apply pt-2 font-medium;
+  }
+}
+
+@layer components {
+  .link {
+    @apply transition-colors hover:fill-blue-800 hover:text-blue-800;
+  }
+
+  .white-background {
+    @apply rounded-3xl bg-white;
+  }
+}

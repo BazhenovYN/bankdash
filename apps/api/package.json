@@ -2,16 +2,17 @@
   "name": "@bankdash/api",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/src/index.ts",
+  "main": "dist/src/app.js",
   "types": "dist/src/index.d.ts",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
-    "prisma:deploy": "prisma migrate deploy",
+    "prisma:generate": "prisma generate",
+    "prisma:reset": "prisma migrate reset -f",
     "db:rm": "docker compose rm db -s -f -v",
     "db:up": "docker compose up db -d",
-    "db:reset": "npm run db:rm && npm run db:up && npm run prisma:deploy",
+    "db:reset": "npm run db:rm && npm run db:up && npm run prisma:reset",
     "dev": "tsx watch --env-file=.env src/app.ts",
-    "build": "tsc",
+    "build": "rm -rf dist && prisma generate && tsc && tsc-alias",
     "start": "node dist/src/app.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
@@ -29,7 +30,7 @@
     "bcrypt": "^5.1.1",
     "fastify": "^4.27.0",
     "fastify-plugin": "^4.5.1",
-    "superjson": "^2.2.1",
+    "superjson": "1.13.3",
     "zod": "^3.23.8"
   },
   "devDependencies": {
@@ -40,6 +41,7 @@
     "eslint": "^8.57.0",
     "prettier": "^3.3.2",
     "prisma": "^5.15.0",
+    "tsc-alias": "^1.8.10",
     "tsx": "^4.15.4",
     "typescript": "^5.4.5"
   }

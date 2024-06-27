@@ -1,13 +1,11 @@
 import autoLoad from '@fastify/autoload';
 import fastify from 'fastify';
-import { dirname, join } from 'node:path';
+import { join } from 'node:path';
 import { env } from 'node:process';
-import { fileURLToPath } from 'node:url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+import prisma from './lib/prisma';
 
-const host = env.HOST ?? 'localhost';
+const host = env.HOST ?? '0.0.0.0';
 const port = env.PORT ? Number(env.PORT) : 4000;
 
 const server = fastify({
@@ -35,3 +33,15 @@ const start = async () => {
 };
 
 start();
+
+async function closeGracefully(signal: NodeJS.Signals) {
+  server.log.info(`Received signal to terminate: ${signal}`);
+
+  await server.close();
+  await prisma.$disconnect();
+
+  process.kill(process.pid, signal);
+}
+
+process.once('SIGINT', closeGracefully);
+process.once('SIGTERM', closeGracefully);

@@ -13,7 +13,7 @@
     "test": "pnpm run --parallel test",
     "build:api": "pnpm --filter api build",
     "build:web": "pnpm --filter web build",
-    "start:api": "pnpm --filter api start:prod",
+    "start:api": "pnpm --filter api start",
     "start:web": "pnpm --filter web start",
     "prepare": "husky"
   },

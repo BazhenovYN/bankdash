@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 
 export const formatAmount = (amount: number, currency: string): string => {
-  const options = { style: 'currency', currency };
+  const options = { style: 'currency', currency } satisfies Intl.NumberFormatOptions;
   const numberFormat = new Intl.NumberFormat('en-US', options);
 
   return numberFormat.format(amount);

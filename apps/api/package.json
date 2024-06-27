@@ -43,6 +43,6 @@
     "prisma": "^5.15.0",
     "tsc-alias": "^1.8.10",
     "tsx": "^4.15.4",
-    "typescript": "^5.4.5"
+    "typescript": "^5.5.2"
   }
 }

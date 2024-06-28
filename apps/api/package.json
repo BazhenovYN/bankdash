@@ -5,6 +5,9 @@
   "main": "dist/src/app.js",
   "types": "dist/src/index.d.ts",
   "type": "commonjs",
+  "private": true,
+  "packageManager": "pnpm@9.4.0",
+  "license": "MIT",
   "scripts": {
     "prisma:generate": "prisma generate",
     "prisma:reset": "prisma migrate reset -f",
@@ -14,12 +17,12 @@
     "dev": "tsx watch --env-file=.env src/app.ts",
     "build": "rm -rf dist && prisma generate && tsc && tsc-alias",
     "start": "node dist/src/app.js",
+    "start:migrate": "prisma migrate deploy && node dist/prisma/seed.js && node dist/src/app.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
-  "license": "MIT",
   "prisma": {
-    "seed": "tsx --env-file=.env prisma/seed.ts"
+    "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
     "@fastify/autoload": "^5.9.0",
@@ -30,6 +33,7 @@
     "bcrypt": "^5.1.1",
     "fastify": "^4.27.0",
     "fastify-plugin": "^4.5.1",
+    "prisma": "^5.16.1",
     "superjson": "1.13.3",
     "zod": "^3.23.8"
   },
@@ -40,7 +44,6 @@
     "@typescript-eslint/eslint-plugin": "^7.13.0",
     "eslint": "^8.57.0",
     "prettier": "^3.3.2",
-    "prisma": "^5.15.0",
     "tsc-alias": "^1.8.10",
     "tsx": "^4.15.4",
     "typescript": "^5.5.2"

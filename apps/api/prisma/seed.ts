@@ -1,4 +1,4 @@
-import { createUser } from '@api/data';
+import { createUser, getUserByEmail } from '@api/data';
 import {
   BankAccount,
   Card,
@@ -101,15 +101,20 @@ async function createUserData(
   paymentServices: PaymentService[],
   transactionStatuses: TransactionStatus[]
 ) {
-  const user = await createUser(prisma, {
+  const email = 'jane-doe@gmail.com';
+  const user = await getUserByEmail(prisma, email);
+
+  if (user) return;
+
+  const newUser = await createUser(prisma, {
     name: 'Jane Doe',
     password: '123456',
-    email: 'jane-doe@gmail.com',
+    email,
   });
 
   const account = await prisma.bankAccount.create({
     data: {
-      userId: user.id,
+      userId: newUser.id,
       currencyId: currency[0].id,
     },
   });
@@ -146,9 +151,9 @@ async function createUserData(
     ],
   });
 
-  await createUserProfile(user);
-  await createUserPreferences(user, currency[0]);
-  await createTransactions(user, account, primaryCard, currency[0], transactionStatuses);
+  await createUserProfile(newUser);
+  await createUserPreferences(newUser, currency[0]);
+  await createTransactions(newUser, account, primaryCard, currency[0], transactionStatuses);
 }
 
 async function createUserProfile(user: User) {

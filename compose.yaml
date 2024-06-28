@@ -1,0 +1,54 @@
+version: "3.8"
+services:
+  api:
+    container_name: api
+    build:
+      context: .
+      target: api
+    restart: always
+    env_file:
+      - ./apps/api/.env
+    ports:
+      - "4000:4000"
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgresql://postgres:password123@postgres:5432/db?schema=public
+    depends_on:
+      - db
+    networks:
+      - api_db_network
+      - api_web_network
+  web:
+    container_name: web
+    build:
+      context: .
+      target: web
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      NEXT_API_SERVER: http://api:4000
+    depends_on:
+      - api
+    networks:
+      - api_web_network
+  db:
+    container_name: postgres
+    image: postgres:16.2-alpine3.19
+    restart: always
+    env_file:
+      - ./apps/api/.env
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - api_db_network
+volumes:
+  db_data:
+networks:
+  api_db_network:
+    driver: bridge
+  api_web_network:
+    driver: bridge

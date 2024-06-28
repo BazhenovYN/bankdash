@@ -4,9 +4,10 @@
   "author": "Iurii Bazhenov",
   "description": "Bank dashboard",
   "private": true,
-  "packageManager": "pnpm@9.2.0",
+  "packageManager": "pnpm@9.4.0",
   "license": "MIT",
   "scripts": {
+    "docker:prod": "docker compose up -d --build",
     "dev": "pnpm run --parallel dev",
     "lint": "pnpm run --parallel lint",
     "format": "pnpm run --parallel format",

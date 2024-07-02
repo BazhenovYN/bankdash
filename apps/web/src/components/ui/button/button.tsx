@@ -30,9 +30,9 @@ export function Button({
       )}
       {...rest}
     >
-      {startIcon}
+      {startIcon && <div className="h-6 w-6">{startIcon}</div>}
       {children}
-      {endIcon}
+      {endIcon && <div className="h-6 w-6">{endIcon}</div>}
     </button>
   );
 }

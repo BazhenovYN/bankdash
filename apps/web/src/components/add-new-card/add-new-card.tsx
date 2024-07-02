@@ -12,7 +12,7 @@ export function AddNewCard() {
   return (
     <Container title="Add new card">
       <div className="white-background flex flex-col justify-between space-y-8 p-5 lg:p-8">
-        <p className="text-xs text-gray-600 lg:text-base">{description}</p>
+        <p className="m-0 text-xs text-gray-600 lg:text-base">{description}</p>
         <form action={addCard}>
           <div className="grid gap-x-8 gap-y-5 md:grid-cols-2 md:grid-rows-2">
             <Input label="Card type" id="card-type" placeholder="Classic" />
